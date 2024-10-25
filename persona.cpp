@@ -1,80 +1,127 @@
-#include <string>
-using namespace std;
+#include "persona.h"
 
-class Persona
+Persona::Persona()
 {
-private:
-    double Dni; 
-    string nombre;
-public:
-   Persona (string, double);
-   Persona ();
+}
+Persona::Persona(string _nombre, double _dni)
+{
+}
+void Persona::setdni(double _dni)
+{
+    Dni = _dni;
+}
 
-   void setdni(double);
-   double getDni();
-   void setnombre(string);
-   string getnombre();
-};
-///////////////////////////////////////////////////////
-class Usuario: public Persona
+string Persona::getnombre()
 {
-private:
-    int edad;
-public:
-    Usuario();
-    Usuario(string , double , int );
-    void setedad(int);
-    int getedad();
-};
-//
-class Autor : public Persona
-{
-private:
-    string medio;
-public:
-    Autor();
-    Autor(string , double, string);
-    void setmedio(string);
-    string getmedio();
+return nombre;
+}
 
-};
-//////////////////////////////////////
-class Comentario
+void Persona::setnombre(string _nombre)
 {
-private:
-    int numero;
-    string texto;
-public:
-    Comentario();
-    Comentario(int,string);
-    void setnumero(int);
-    void settexto(string);
-    int getnumero();
-    string gettexto();
-};
-///////////////////////////////////////
-class Noticia
+    nombre = _nombre;
+}
+
+double Persona::getDni()
 {
-private:
-    string titulo; 
-    string detalle;
-    int dia;
-    int mes;
-    int ano;
-public:
-   Noticia (string, string,int,int,int);
-   Noticia ();
-   void settitulo(string);
-   string gettitulo();
-   void setdetalle(string);
-   string getdetalle();
-   void setdia(int);
-   int getdia();
-   void setmes(int);    
-   int getmes();
-   void setano(int);
-   int getano();
+return Dni;
+}
+///////////////////////////////////////////////////////////////////////////////
+Usuario::Usuario()
+{
+}
+Usuario::Usuario(string _nombre, double _dni, int _edad): Persona (_nombre, _dni){    
+}
+void Usuario::setedad(int _edad)
+{
+    edad = _edad;
+}
+int Usuario::getedad()
+{
+return edad;
 };
+/////////////////////////////////////////////////////////////////////
+Autor::Autor(){
+}
+Autor::Autor(string _nombre, double _dni, string _medio): Persona (_nombre, _dni){    
+}
+void Autor::setmedio(string _medio){
+    medio = _medio;
+}
+string Autor::getmedio()
+{
+return medio;
+};
+///////////////////////////////////////////////////////////////////////
+Comentario::Comentario()
+{
+}
+Comentario::Comentario(int _numero,string _texto)
+{
+}
+void Comentario::setnumero(int _numero)
+{
+    numero=_numero;
+}
+int Comentario::getnumero()
+{
+    return numero;
+}
+void Comentario::settexto(string _texto)
+{
+    texto=_texto;
+}
+string Comentario::gettexto()
+{
+    return texto;
+}
+////////////////////////////////////////////////////////
+Noticia::Noticia()
+{
+}
+Noticia::Noticia(string _titulo, string _detalle, int _dia, int _mes, int _ano)
+{
+}
+
+void Noticia::settitulo(string _titulo)
+{
+    titulo = _titulo;
+}
+string Noticia::gettitulo()
+{
+return titulo;
+}
+void Noticia::setdetalle(string _detalle)
+{
+    detalle = _detalle;
+}
+string Noticia::getdetalle()
+{
+return detalle;
+}
+void Noticia::setdia(int _dia)
+{
+    dia = _dia;
+}
+int Noticia::getdia()
+{
+return dia;
+}
+void Noticia::setmes(int _mes)
+{
+    mes = _mes;
+}
+int Noticia::getmes()
+{
+return mes;
+}
+void Noticia::setano(int _ano)
+{
+    ano = _ano;
+}
+int Noticia::getano()
+{
+return ano;
+}
 
 
 

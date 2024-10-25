@@ -1,49 +1,80 @@
-#include "persona.h"
+#include <string>
+using namespace std;
 
-persona::persona()
+class Persona
 {
-}
-persona::persona(string _nombre, double _dni){
+private:
+    double Dni; 
+    string nombre;
+public:
+   Persona (string, double);
+   Persona ();
 
- 
-}
-void persona::setdni(double _dni)
+   void setdni(double);
+   double getDni();
+   void setnombre(string);
+   string getnombre();
+};
+///////////////////////////////////////////////////////
+class Usuario: public Persona
 {
-    Dni = _dni;
-}
-
-
-string persona::getnombre()
+private:
+    int edad;
+public:
+    Usuario();
+    Usuario(string , double , int );
+    void setedad(int);
+    int getedad();
+};
+//
+class Autor : public Persona
 {
-return nombre;
-}
+private:
+    string medio;
+public:
+    Autor();
+    Autor(string , double, string);
+    void setmedio(string);
+    string getmedio();
 
-void persona::setnombre(string _nombre)
+};
+//////////////////////////////////////
+class Comentario
 {
-    nombre = _nombre;
-}
-
-double persona::getDni()
+private:
+    int numero;
+    string texto;
+public:
+    Comentario();
+    Comentario(int,string);
+    void setnumero(int);
+    void settexto(string);
+    int getnumero();
+    string gettexto();
+};
+///////////////////////////////////////
+class Noticia
 {
-return Dni;
-}
-
-
-//////////////////////////////////////////////////////////
-
-
-Usuario::Usuario(string _nombre, double _dni, int _edad): persona (_nombre, _dni){
-    
-}
-
-void Usuario::setedad(int _edad){
-    edad = _edad;
-}
-int Usuario::getedad()
-{
-return edad;
-}
-;
+private:
+    string titulo; 
+    string detalle;
+    int dia;
+    int mes;
+    int ano;
+public:
+   Noticia (string, string,int,int,int);
+   Noticia ();
+   void settitulo(string);
+   string gettitulo();
+   void setdetalle(string);
+   string getdetalle();
+   void setdia(int);
+   int getdia();
+   void setmes(int);    
+   int getmes();
+   void setano(int);
+   int getano();
+};
 
 
 

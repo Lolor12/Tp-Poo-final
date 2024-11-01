@@ -3,7 +3,7 @@ using namespace std;
 /// ////////////////
 class Usuario;
 class Autor;
-///////////
+///////////////////7
 class Persona
 {
 private:
@@ -20,13 +20,38 @@ public:
 };
 
 //////////
+class Autor : public Persona
+{
+protected:
+    string medio;
+public:
+    Autor();
+    Autor(string, double, string);
+    void setmedio(string);
+    string getmedio();
+    void mostrarautor();
+};
+///////////
+class Usuario : public Persona
+{
+protected:
+    int edad;
+public:
+    Usuario();
+    Usuario(string, double, int);
+    void setedad(int);
+    int getedad();
+};
+
+
 class Comentario
 {
 protected:
-    Usuario Usuario;
+    
     int numero;
     string texto;
 public:
+    Usuario Usuario;
     Comentario();
     Comentario(int, string);
     void setnumero(int);
@@ -39,14 +64,15 @@ public:
 class Noticia
 {
 private:
-    Comentario C; 
-    Autor* A;  
+     
     string titulo;
     string detalle;
     int dia;
     int mes;
     int ano;
 public:
+Comentario C; 
+    Autor A; 
     Noticia(string, string, int, int, int);
     Noticia();
     void settitulo(string);
@@ -61,26 +87,3 @@ public:
     int getano();
 };
 
-///////////
-class Usuario : public Persona
-{
-protected:
-    int edad;
-public:
-    Usuario();
-    Usuario(string, double, int);
-    void setedad(int);
-    int getedad();
-};
-
-////////////
-class Autor : public Persona
-{
-protected:
-    string medio;
-public:
-    Autor();
-    Autor(string, double, string);
-    void setmedio(string);
-    string getmedio();
-};

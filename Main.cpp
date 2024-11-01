@@ -1,4 +1,3 @@
-
 #include "persona.h"
 #include <iostream>
  #include <string>
@@ -8,7 +7,7 @@ int main() {
     Persona P;
     Autor A;
     string nombre;
-    double Dni;
+    long Dni;
     string medio;
     Noticia noticia;
     int opcion;
@@ -22,25 +21,19 @@ int main() {
      
     if (opcion == 1)
     {
-        cout<<"Indique su Nombre:";
+
+        cout<<"Indique su Nombre: ";
                 cin >> nombre;
                 A.setnombre(nombre);
-                cout<<"Indique su DNI";
+                cout<<"Indique su DNI: ";
                 cin >> Dni;
                 A.setdni(Dni);
-                 cout<<"Indique su Medio";
+                 cout<<"Indique su Medio: ";
                 cin >> medio;
                 A.setmedio(medio);
             
                 cout<<"Usted se Registro Exitosamente"<<endl;
                 A.mostrarautor();
     }
-    
-                
-               
-                
-       
-       
-
-
+  
 }

@@ -4,10 +4,10 @@
 Persona::Persona()
 {
 }
-Persona::Persona(string _nombre, int _dni)
+Persona::Persona(string _nombre, long _dni)
 {
 }
-void Persona::setdni(int _dni)
+void Persona::setdni(long _dni)
 {
     Dni = _dni;
 }
@@ -22,7 +22,7 @@ void Persona::setnombre(string _nombre)
     nombre = _nombre;
 }
 
-double Persona::getDni()
+long Persona::getDni()
 {
 return Dni;
 }
@@ -30,7 +30,7 @@ return Dni;
 Usuario::Usuario()
 {
 }
-Usuario::Usuario(string _nombre, double _dni, int _edad): Persona (_nombre, _dni){    
+Usuario::Usuario(string _nombre, long _dni, int _edad): Persona (_nombre, _dni){    
 }
 void Usuario::setedad(int _edad)
 {
@@ -43,7 +43,7 @@ return edad;
 /////////////////////////////////////////////////////////////////////
 Autor::Autor(){
 }
-Autor::Autor(string _nombre, double _dni, string _medio): Persona (_nombre, _dni){    
+Autor::Autor(string _nombre, long _dni, string _medio): Persona (_nombre, _dni){    
 }
 void Autor::setmedio(string _medio){
     medio = _medio;

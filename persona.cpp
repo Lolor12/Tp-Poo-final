@@ -53,8 +53,8 @@ string Autor::getmedio()
 return medio;
 };
 
-void Autor::mostrarautor(){
- cout << "Autor: " << getnombre() << "\nDNI: " << getDni() << "\nMedio: " << medio << endl;
+string Autor::mostrarautor(){
+ return getnombre() ; 
 };
 ///////////////////////////////////////////////////////////////////////
 Comentario::Comentario()
@@ -85,7 +85,13 @@ Noticia::Noticia()
 }
 Noticia::Noticia(string _titulo, string _detalle, int _dia, int _mes, int _ano)
 {
+    titulo = _titulo;
+    detalle = _detalle;
+    dia = _dia; 
+    mes = _mes;
+    ano = _ano;
 }
+
 
 void Noticia::settitulo(string _titulo)
 {
@@ -127,5 +133,4 @@ int Noticia::getano()
 {
 return ano;
 }
-
 

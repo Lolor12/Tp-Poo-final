@@ -3,15 +3,16 @@ using namespace std;
 /// ////////////////
 class Usuario;
 class Autor;
-///////////////////
+///////////////////7
 class Persona
 {
 private:
     long Dni;
     string nombre;
 public:
-    Persona();
+ Persona();
     Persona(string, long);
+   
 
     void setdni(long);
     long getDni();
@@ -29,7 +30,8 @@ public:
     Autor(string, long, string);
     void setmedio(string);
     string getmedio();
-    void mostrarautor();
+    string mostrarautor();
+    
 };
 ///////////
 class Usuario : public Persona
@@ -73,7 +75,7 @@ private:
 public:
 Comentario C; 
     Autor A; 
-    Noticia();
+     Noticia();
     Noticia(string, string, int, int, int);
     void settitulo(string);
     string gettitulo();
@@ -85,5 +87,7 @@ Comentario C;
     int getmes();
     void setano(int);
     int getano();
+   
 };
+
 

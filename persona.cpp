@@ -1,4 +1,5 @@
 #include "persona.h"
+#include <iostream>
 
 Persona::Persona()
 {
@@ -50,6 +51,10 @@ void Autor::setmedio(string _medio){
 string Autor::getmedio()
 {
 return medio;
+};
+
+void Autor::mostrarautor(){
+ cout << "Autor: " << getnombre() << "\nDNI: " << getDni() << "\nMedio: " << medio << endl;
 };
 ///////////////////////////////////////////////////////////////////////
 Comentario::Comentario()
@@ -122,6 +127,7 @@ int Noticia::getano()
 {
 return ano;
 }
+
 
 
 

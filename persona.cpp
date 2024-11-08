@@ -56,6 +56,10 @@ return medio;
 string Autor::mostrarautor(){
  return getnombre() ; 
 };
+string Autor::mostrarMedio(){
+    return getmedio();
+}
+
 ///////////////////////////////////////////////////////////////////////
 Comentario::Comentario()
 {
@@ -133,4 +137,3 @@ int Noticia::getano()
 {
 return ano;
 }
-

@@ -1,8 +1,9 @@
 
 #include "persona.h"
 #include <iostream>
- #include <string>
+#include <string>
 #include <fstream>
+#include <algorithm>
 using namespace std;
 int main() {
 
@@ -11,6 +12,7 @@ int main() {
     string nombre;
     double Dni;
     string medio;
+    string nombreArchivo; 
     Noticia noticia;
     int opcion;
 
@@ -47,13 +49,15 @@ int main() {
                 noticia.setano(ano);
                 cout<<"Ingrese el titulo de su noticia: "<<endl;
                 cin.ignore();
-                getline(cin,titulo);
+                getline(cin, titulo);
                 noticia.settitulo(titulo);
                 cout<<"Escriba su noticia: "<<endl;
-                cin.ignore();
-                getline(cin,detalle);
+                getline(cin, detalle);
                 noticia.setdetalle(detalle);
-                ofstream Archi("Noticia.txt"); 
+
+                replace(titulo.begin(), titulo.end(), ' ', '_');
+                nombreArchivo = titulo + ".txt";
+                ofstream Archi(nombreArchivo,std::ios::app); 
        
                 if (!Archi)
                 {
@@ -61,10 +65,11 @@ int main() {
                 }
                 else 
                 {
-                    Archi << noticia.gettitulo();
+                    Archi <<"Noticia de: "<<A.mostrarMedio()<<endl;
                     Archi << noticia.getdia()<<"/"<<noticia.getmes()<<"/"<<noticia.getano()<<endl;
-                    Archi << noticia.getdetalle()<<endl;
-                    Archi << A.mostrarautor();
+                    Archi <<endl<< noticia.gettitulo()<<endl;
+                    Archi <<endl<< noticia.getdetalle()<<endl;
+                    Archi <<endl<<"Autor: "<<A.mostrarautor()<<endl;
                 }
     }
 }

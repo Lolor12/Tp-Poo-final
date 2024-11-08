@@ -24,31 +24,35 @@ int main() {
     if (opcion == 1)
     {
         int dia,mes,ano;
-        string titulo,texto;
-        cout<<"Indique su Nombre:";
-                cin >> nombre;
+        string titulo,detalle;
+        cout<<"Indique su Nombre: ";
+                cin.ignore();
+                getline(cin,nombre);
                 A.setnombre(nombre);
-                cout<<"Indique su DNI";
+                cout<<"Indique su DNI: ";
                 cin >> Dni;
                 A.setdni(Dni);
-                 cout<<"Indique su Medio";
-                cin >> medio;
+                cout<<"Indique su Medio: ";
+                cin.ignore();
+                getline(cin,medio);
                 A.setmedio(medio);
             
                 cout<<"Usted se Registro Exitosamente"<<endl;
-                cout<<"Ingrese la fecha de hoy dia, mes y año"<<endl;
+                cout<<"Ingrese la fecha de hoy dia, mes y anio: "<<endl;
                 cin >> dia;
                 cin >> mes;
                 cin >> ano;
                 noticia.setdia(dia);
                 noticia.setmes(mes);
                 noticia.setano(ano);
-                cout<<"Ingrese el titulo de su noticia"<<endl;
-                cin >> titulo;
+                cout<<"Ingrese el titulo de su noticia: "<<endl;
+                cin.ignore();
+                getline(cin,titulo);
                 noticia.settitulo(titulo);
-                cout<<"Escriba su noticia"<<endl;
-                cin >> texto;
-                noticia.setdetalle(texto);
+                cout<<"Escriba su noticia: "<<endl;
+                cin.ignore();
+                getline(cin,detalle);
+                noticia.setdetalle(detalle);
                 ofstream Archi("Noticia.txt"); 
        
                 if (!Archi)
@@ -59,11 +63,8 @@ int main() {
                 {
                     Archi << noticia.gettitulo();
                     Archi << noticia.getdia()<<"/"<<noticia.getmes()<<"/"<<noticia.getano()<<endl;
-                    Archi << noticia.getdetalle();
+                    Archi << noticia.getdetalle()<<endl;
                     Archi << A.mostrarautor();
                 }
-                
-
-
     }
-    
+}

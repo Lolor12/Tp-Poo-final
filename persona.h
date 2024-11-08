@@ -31,6 +31,7 @@ public:
     void setmedio(string);
     string getmedio();
     string mostrarautor();
+    string mostrarMedio();
     
 };
 ///////////

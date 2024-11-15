@@ -19,6 +19,9 @@ int main() {
     int dia,mes,ano;
     string titulo,detalle;
     int opcion;
+    Comentario c;
+    string coment;
+   
 
         cout << "Bienvenidos a Daily Bugle" << endl;
         cout << "1. Publicar una noticia" << endl;
@@ -57,9 +60,10 @@ int main() {
                 getline(cin, detalle);
                 noticia.setdetalle(detalle);
 
-                replace(titulo.begin(), titulo.end(), ' ', '_');
+ replace(titulo.begin(), titulo.end(), ' ', '_');
                 nombreArchivo = titulo + ".txt";
                 ofstream Archi(nombreArchivo,std::ios::app); 
+               
        
                 if (!Archi)
                 {
@@ -93,45 +97,55 @@ int main() {
                 cout<<"3.Anio: "<<endl;
                 int opcion1;
                 cin >> opcion1;
-              if (opcion1 == 1)
-                  {
-            
-        string nombA;
-        cin.ignore();
-        cout << "Ingrese el nombre del Autor: ";
-        getline(cin, nombA);
+if (opcion1 == 1) {
+    string nombA;
+    cin.ignore();
+    cout << "Ingrese el nombre del Autor: ";
+    getline(cin, nombA);
 
-       
-        for (const auto& entry : fs::directory_iterator(".")) {
-            if (entry.path().extension() == ".txt") { 
-                ifstream archivo(entry.path());
-                if (archivo) {
-                    string linea;
-                    bool autorCoincide = false;
-                    string contenidoNoticia;
+    for (const auto& entry : fs::directory_iterator(".")) {
+        if (entry.path().extension() == ".txt") {
+            ifstream archivo(entry.path());
+            if (archivo) {
+                string linea;
+                bool autorCoincide = false;
+                string contenidoNoticia;
 
-                    while (getline(archivo, linea)) {
-                        contenidoNoticia += linea + "\n";
-                        if (linea.find("Autor: " + nombA) != string::npos) {
-                            autorCoincide = true;
-                        }
+                while (getline(archivo, linea)) {
+                    contenidoNoticia += linea + "\n";
+                    if (linea.find("Autor: " + nombA) != string::npos) {
+                        autorCoincide = true;
                     }
-
-             if (autorCoincide) {
-                        cout << "Noticia encontrada en el archivo: " << entry.path().filename() << endl;
-                        cout << contenidoNoticia << endl;
-                        noticiaEncontrada = true;
-                 }
                 }
-                archivo.close();
-            }
 
+                if (autorCoincide) {
+                    cout << "Noticia encontrada en el archivo: " << entry.path().filename() << endl;
+                    cout << contenidoNoticia << endl;
+                    noticiaEncontrada = true;
+                    cout << "Ingrese su comentario: " << endl;
+                
+                    getline(cin, coment);
+                    c.settexto(coment);
+
+               
+                    ofstream Archi(entry.path(), std::ios::app);
+                    if (Archi) {
+                        Archi << endl << c.gettexto();
+                        cout << endl << "Se registró tu comentario de una forma EXITOSA" << endl;
+                    } else {
+                        cout << "ERROR al abrir el archivo para guardar el comentario." << endl;
+                    }
+                }
+            }
+            archivo.close();
         }
+    }
 
     if (!noticiaEncontrada) {
-            cout << "No se encontró ninguna noticia del autor: " << nombA << endl;
+        cout << "No se encontró ninguna noticia del autor: " << nombA << endl;
     }
-                 }
+}
+
 else if (opcion1 == 2) {
         
             cout << "Ingrese el título de la noticia: ";
@@ -158,12 +172,32 @@ else if (opcion1 == 2) {
                             cout << "Noticia encontrada en el archivo: " << entry.path().filename() << endl;
                             cout << contenidoNoticia << endl;
                             noticiaEncontrada = true;
-                        }
+                             cout << "Ingrese su comentario: " << endl;
+                    
+                    getline(cin, coment);
+                    c.settexto(coment);
+
+               
+                    ofstream Archi(entry.path(), std::ios::app);
+                    if (Archi) {
+                        Archi << endl << c.gettexto();
+                        cout << endl << "Se registró tu comentario de una forma EXITOSA" << endl;
+                    } else {
+                        cout << "ERROR al abrir el archivo para guardar el comentario." << endl;
                     }
-                    archivo.close();
                 }
             }
-        } else if (opcion1 == 3) {
+            archivo.close();
+        }
+    }
+
+    if (!noticiaEncontrada) {
+        cout << "No se encontró ninguna noticia del autor" << endl;
+    }
+                        }
+                    
+
+         else if (opcion1 == 3) {
            
             cout << "Ingrese el año de la noticia: ";
             int anoBusqueda;
@@ -188,16 +222,30 @@ else if (opcion1 == 2) {
                             cout << "Noticia encontrada en el archivo: " << entry.path().filename() << endl;
                             cout << contenidoNoticia << endl;
                             noticiaEncontrada = true;
-                        }
+                        cout << "Ingrese su comentario: " << endl;
+                
+                             getline(cin, coment);
+                              c.settexto(coment);
+
+               
+                    ofstream Archi(entry.path(), std::ios::app);
+                    if (Archi) {
+                        Archi << endl << c.gettexto();
+                        cout << endl << "Se registró tu comentario de una forma EXITOSA" << endl;
+                    } else {
+                        cout << "ERROR al abrir el archivo para guardar el comentario." << endl;
                     }
-                    archivo.close();
                 }
             }
-        }
-
-        if (!noticiaEncontrada) {
-            cout << "No se encontró ninguna noticia con los criterios de búsqueda." << endl;
+            archivo.close();
         }
     }
+
+    if (!noticiaEncontrada) {
+        cout << "No se encontró ninguna noticia del autor"<< endl;
+    }
+    }
+}
+   
 }
    

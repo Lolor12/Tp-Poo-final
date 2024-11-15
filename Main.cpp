@@ -144,7 +144,7 @@ int main() {
                                                 throw runtime_error("Error al abrir el archivo para guardar el comentario.");
                                             }
                                             Archi << endl << c.gettexto();
-                                            cout << endl << "Se registró tu comentario de una forma EXITOSA" << endl;
+                                            cout << endl << "Se registro tu comentario de una forma EXITOSA" << endl;
                                         }
                                     }
                                     archivo.close();
@@ -152,14 +152,14 @@ int main() {
                             }
 
                             if (!noticiaEncontrada) {
-                                cout << "No se encontró ninguna noticia del autor: " << nombA << endl;
+                                cout << "No se encontro ninguna noticia del autor: " << nombA << endl;
                             }
                         } catch (const exception &e) {
-                            cout << "Se produjo un error durante la búsqueda: " << e.what() << endl;
+                            cout << "Se produjo un error durante la busqueda: " << e.what() << endl;
                             }
                     } else if (opcion1 == 2) {
                         try {
-                            cout << "Ingrese el título de la noticia: ";
+                            cout << "Ingrese el titulo de la noticia: ";
                             string tituloBusqueda;
                             cin.ignore();
                             getline(cin, tituloBusqueda);
@@ -192,7 +192,7 @@ int main() {
                                                 throw runtime_error("Error al abrir el archivo para guardar el comentario.");
                                             }
                                             Archi << endl << c.gettexto();
-                                            cout << endl << "Se registró tu comentario de una forma EXITOSA" << endl;
+                                            cout << endl << "Se registro tu comentario de una forma EXITOSA" << endl;
                                         }
                                     }
                                     archivo.close();
@@ -200,15 +200,15 @@ int main() {
                             }
 
                             if (!noticiaEncontrada) {
-                                cout << "No se encontró ninguna noticia con el título proporcionado." << endl;
+                                cout << "No se encontro ninguna noticia con el titulo proporcionado." << endl;
                             }
                         } catch (const exception &e) {
-                            cout << "Se produjo un error durante la búsqueda: " << e.what() << endl;
+                            cout << "Se produjo un error durante la busqueda: " << e.what() << endl;
                         }
                     } else if (opcion1 == 3) {
                        
                         try {
-                            cout << "Ingrese el año de la noticia: ";
+                            cout << "Ingrese el anio de la noticia: ";
                             int anoBusqueda;
                             cin >> anoBusqueda;
 
@@ -241,7 +241,7 @@ int main() {
                                                 throw runtime_error("Error al abrir el archivo para guardar el comentario.");
                                             }
                                             Archi << endl << c.gettexto();
-                                            cout << endl << "Se registró tu comentario de una forma EXITOSA" << endl;
+                                            cout << endl << "Se registro tu comentario de una forma EXITOSA" << endl;
                                         }
                                     }
                                     archivo.close();
@@ -249,10 +249,10 @@ int main() {
                             }
 
                             if (!noticiaEncontrada) {
-                                cout << "No se encontró ninguna noticia del año especificado." << endl;
+                                cout << "No se encontro ninguna noticia del anio especificado." << endl;
                             }
                         } catch (const exception &e) {
-                            cout << "Se produjo un error durante la búsqueda: " << e.what() << endl;
+                            cout << "Se produjo un error durante la busqueda: " << e.what() << endl;
                         }
                     }
                 } catch (const exception &e) {

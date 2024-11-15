@@ -1,12 +1,13 @@
-
 #include "persona.h"
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <algorithm>
+#include <filesystem>
 using namespace std;
+namespace fs = std::filesystem;
 int main() {
-
+    bool noticiaEncontrada = false;
     Persona P;
     Autor A;
     Usuario U;
@@ -72,53 +73,131 @@ int main() {
                     Archi <<endl<< noticia.getdetalle()<<endl;
                     Archi <<endl<<"Autor: "<<A.mostrarautor()<<endl;
                 }
-    }else if(opcion==2){
-            int edad;
-                cout<<"Indique su Nombre: ";
-                cin.ignore();
-                getline(cin,nombre);
-                U.setnombre(nombre);
-                cout<<"Indique su DNI: ";
-                cin >> Dni;
-                U.setdni(Dni);
-                cout<<"Indique su Edad: ";
-                cin>>edad;
-                U.setedad(edad);
+    } else if (opcion == 2) {
+        int edad;
+        cout << "Indique su Nombre: ";
+        cin.ignore();
+        getline(cin, nombre);
+        U.setnombre(nombre);
+        cout << "Indique su DNI: ";
+        cin >> Dni;
+        U.setdni(Dni);
+        cout << "Indique su Edad: ";
+        cin >> edad;
+        U.setedad(edad);
 
-                cout<<"Usted se Registro Exitosamente"<<endl;
-                cout<<"Busque una noticia: "<<endl;
+        cout << "Usted se Registro Exitosamente" << endl;
+        cout<<"Busque una noticia por: "<<endl;
                 cout<<"1.Autor: "<<endl;
                 cout<<"2.Titulo: "<<endl;
                 cout<<"3.Anio: "<<endl;
-                int busqueda;
-                cin>>busqueda;
-                if (busqueda == 1) {
-                    cout << "Ingrese el nombre del Autor: ";
-                    string nombA;
-                    cin.ignore();
-                    getline(cin, nombA);
+                int opcion1;
+                cin >> opcion1;
+              if (opcion1 == 1)
+                  {
+            
+        string nombA;
+        cin.ignore();
+        cout << "Ingrese el nombre del Autor: ";
+        getline(cin, nombA);
 
-                     ifstream archivo;
-                    archivo.open(nombreArchivo, ios::in);
+       
+        for (const auto& entry : fs::directory_iterator(".")) {
+            if (entry.path().extension() == ".txt") { 
+                ifstream archivo(entry.path());
+                if (archivo) {
+                    string linea;
+                    bool autorCoincide = false;
+                    string contenidoNoticia;
 
-                     if (!archivo) {
-                     cout << "No se pudo abrir el archivo." << endl;
-                      } else {
-                    bool autorEncontrado = false;
-                    while (getline(archivo, detalle)) {
-                    if (detalle.find(nombA) != string::npos) {
-                    autorEncontrado = true;
-                    cout << detalle << endl;
+                    while (getline(archivo, linea)) {
+                        contenidoNoticia += linea + "\n";
+                        if (linea.find("Autor: " + nombA) != string::npos) {
+                            autorCoincide = true;
+                        }
+                    }
+
+             if (autorCoincide) {
+                        cout << "Noticia encontrada en el archivo: " << entry.path().filename() << endl;
+                        cout << contenidoNoticia << endl;
+                        noticiaEncontrada = true;
+                 }
+                }
+                archivo.close();
+            }
+
+        }
+
+    if (!noticiaEncontrada) {
+            cout << "No se encontró ninguna noticia del autor: " << nombA << endl;
+    }
+                 }
+else if (opcion1 == 2) {
+        
+            cout << "Ingrese el título de la noticia: ";
+            string tituloBusqueda;
+            cin.ignore();
+            getline(cin, tituloBusqueda);
+
+            for (const auto& entry : fs::directory_iterator(".")) {
+                if (entry.path().extension() == ".txt") {
+                    ifstream archivo(entry.path());
+                    if (archivo) {
+                        string linea;
+                        bool tituloCoincide = false;
+                        string contenidoNoticia;
+
+                        while (getline(archivo, linea)) {
+                            contenidoNoticia += linea + "\n";
+                            if (linea.find(tituloBusqueda) != string::npos) {
+                                tituloCoincide = true;
+                            }
+                        }
+
+                        if (tituloCoincide) {
+                            cout << "Noticia encontrada en el archivo: " << entry.path().filename() << endl;
+                            cout << contenidoNoticia << endl;
+                            noticiaEncontrada = true;
+                        }
+                    }
+                    archivo.close();
+                }
+            }
+        } else if (opcion1 == 3) {
+           
+            cout << "Ingrese el año de la noticia: ";
+            int anoBusqueda;
+            cin >> anoBusqueda;
+
+            for (const auto& entry : fs::directory_iterator(".")) {
+                if (entry.path().extension() == ".txt") {
+                    ifstream archivo(entry.path());
+                    if (archivo) {
+                        string linea;
+                        bool anoCoincide = false;
+                        string contenidoNoticia;
+
+                        while (getline(archivo, linea)) {
+                            contenidoNoticia += linea + "\n";
+                            if (linea.find("/" + to_string(anoBusqueda)) != string::npos) {
+                                anoCoincide = true;
+                            }
+                        }
+
+                        if (anoCoincide) {
+                            cout << "Noticia encontrada en el archivo: " << entry.path().filename() << endl;
+                            cout << contenidoNoticia << endl;
+                            noticiaEncontrada = true;
+                        }
+                    }
+                    archivo.close();
+                }
             }
         }
-        archivo.close();
 
-        if (!autorEncontrado) {
-            cout << "El autor no fue encontrado en la noticia." << endl;
+        if (!noticiaEncontrada) {
+            cout << "No se encontró ninguna noticia con los criterios de búsqueda." << endl;
         }
     }
 }
-
-                
-    }   
-}
+   

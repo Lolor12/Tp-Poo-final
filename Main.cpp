@@ -22,10 +22,12 @@ int main() {
     Comentario c;
     string coment;
    
-
-        cout << "Bienvenidos a Daily Bugle" << endl;
+while (opcion != 3)
+{
+     cout << "Bienvenidos a Daily Bugle" << endl;
         cout << "1. Publicar una noticia" << endl;
         cout << "2. Leer noticias" << endl;
+        cout<<"3. Salir"<<endl;
         cout << "Ingrese su opcion: ";
         cin >> opcion;
 
@@ -76,6 +78,7 @@ int main() {
                     Archi <<endl<< noticia.gettitulo()<<endl;
                     Archi <<endl<< noticia.getdetalle()<<endl;
                     Archi <<endl<<"Autor: "<<A.mostrarautor()<<endl;
+                    Archi <<endl<<"Comentarios: "<<endl;
                 }
     } else if (opcion == 2) {
         int edad;
@@ -223,7 +226,7 @@ else if (opcion1 == 2) {
                             cout << contenidoNoticia << endl;
                             noticiaEncontrada = true;
                         cout << "Ingrese su comentario: " << endl;
-                
+                            cin.ignore();
                              getline(cin, coment);
                               c.settexto(coment);
 
@@ -247,5 +250,6 @@ else if (opcion1 == 2) {
     }
 }
    
+}  
 }
    

@@ -83,6 +83,7 @@ int main() {
                 } catch (const exception &e) {
                     cout << "Se produjo un error: " << e.what() << endl;
                 }
+
             } else if (opcion == 2) {
                 try {
                     int edad;
@@ -155,9 +156,8 @@ int main() {
                             }
                         } catch (const exception &e) {
                             cout << "Se produjo un error durante la búsqueda: " << e.what() << endl;
-                        }
+                            }
                     } else if (opcion1 == 2) {
-                      
                         try {
                             cout << "Ingrese el título de la noticia: ";
                             string tituloBusqueda;
@@ -266,9 +266,3 @@ int main() {
 
     return 0;
 }
-
-       
-    
-
-              
-        

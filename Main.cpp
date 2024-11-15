@@ -9,11 +9,14 @@ int main() {
 
     Persona P;
     Autor A;
+    Usuario U;
     string nombre;
     double Dni;
     string medio;
     string nombreArchivo; 
     Noticia noticia;
+    int dia,mes,ano;
+    string titulo,detalle;
     int opcion;
 
         cout << "Bienvenidos a Daily Bugle" << endl;
@@ -25,8 +28,6 @@ int main() {
      
     if (opcion == 1)
     {
-        int dia,mes,ano;
-        string titulo,detalle;
         cout<<"Indique su Nombre: ";
                 cin.ignore();
                 getline(cin,nombre);
@@ -71,5 +72,53 @@ int main() {
                     Archi <<endl<< noticia.getdetalle()<<endl;
                     Archi <<endl<<"Autor: "<<A.mostrarautor()<<endl;
                 }
+    }else if(opcion==2){
+            int edad;
+                cout<<"Indique su Nombre: ";
+                cin.ignore();
+                getline(cin,nombre);
+                U.setnombre(nombre);
+                cout<<"Indique su DNI: ";
+                cin >> Dni;
+                U.setdni(Dni);
+                cout<<"Indique su Edad: ";
+                cin>>edad;
+                U.setedad(edad);
+
+                cout<<"Usted se Registro Exitosamente"<<endl;
+                cout<<"Busque una noticia: "<<endl;
+                cout<<"1.Autor: "<<endl;
+                cout<<"2.Titulo: "<<endl;
+                cout<<"3.Anio: "<<endl;
+                int busqueda;
+                cin>>busqueda;
+                if (busqueda == 1) {
+                    cout << "Ingrese el nombre del Autor: ";
+                    string nombA;
+                    cin.ignore();
+                    getline(cin, nombA);
+
+                     ifstream archivo;
+                    archivo.open(nombreArchivo, ios::in);
+
+                     if (!archivo) {
+                     cout << "No se pudo abrir el archivo." << endl;
+                      } else {
+                    bool autorEncontrado = false;
+                    while (getline(archivo, detalle)) {
+                    if (detalle.find(nombA) != string::npos) {
+                    autorEncontrado = true;
+                    cout << detalle << endl;
+            }
+        }
+        archivo.close();
+
+        if (!autorEncontrado) {
+            cout << "El autor no fue encontrado en la noticia." << endl;
+        }
     }
+}
+
+                
+    }   
 }
